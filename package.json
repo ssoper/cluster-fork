@@ -4,7 +4,8 @@
   "author": "Sean Soper <sean.soper@gmail.com>",
   "description": "Easily fork your app to use mulitple cores",
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "benchmark": "make bm"
   },
   "main": "./index",
   "repository": {
