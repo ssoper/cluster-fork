@@ -1,0 +1,25 @@
+{
+  "name": "cluster-fork",
+  "version": "0.0.1",
+  "author": "Sean Soper <sean.soper@gmail.com>",
+  "description": "Easily fork your app to use mulitple cores",
+  "scripts": {
+    "test": "make test"
+  },
+  "main": "./index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ssoper/cluster-fork.git"
+  },
+  "keywords": [
+    "cluster",
+    "fork",
+    "processes",
+    "multicore"
+  ],
+  "dependencies" : {},
+  "license": "MIT",
+  "engine": {
+    "node": ">= 0.8.2"
+  }
+}
