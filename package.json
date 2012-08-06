@@ -1,6 +1,6 @@
 {
   "name": "cluster-fork",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Sean Soper <sean.soper@gmail.com>",
   "description": "Easily fork your app to use mulitple cores",
   "scripts": {

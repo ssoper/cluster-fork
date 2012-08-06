@@ -39,7 +39,7 @@ function ClusterFork() {
       return cluster.workers[workerId];
     };
 
-    this.suicide = function(cb) {
+    emitted.suicide = function(cb) {
       cluster.disconnect(function() {
         cb();
       });
@@ -56,6 +56,9 @@ function ClusterFork() {
       switch (msg.status) {
         case 'processed':
           emitted.emit('processed', msg.pid, msg.data);
+          break;
+        case 'worker_log':
+          console.log('Worker ' + msg.pid + ': ' + util.inspect(msg.data, false, 4));
           break;
         case 'error':
           emitted.emit('error', msg.data);
@@ -78,9 +81,13 @@ function ClusterFork() {
       process.send({ status: 'processed', pid: process.pid, data: data })
     };
 
+    emitted.log = function(msg) {
+      process.send({ status: 'worker_log', pid: process.pid, data: msg });
+    };
+
     this.start = function(master_cb, worker_cb) {
       worker_cb(emitted, workerDone);
-    }
+    };
 
     process.on('message', function(data) {
       emitted.emit('message', data);
