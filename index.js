@@ -39,6 +39,12 @@ function ClusterFork() {
       return cluster.workers[workerId];
     };
 
+    this.suicide = function(cb) {
+      cluster.disconnect(function() {
+        cb();
+      });
+    };
+
     Object.defineProperty(emitted, 'nextWorker', { get: this.requestWorker });
     Object.defineProperty(emitted, 'numWorkers', { value: numCPUs, writable: false });
 
